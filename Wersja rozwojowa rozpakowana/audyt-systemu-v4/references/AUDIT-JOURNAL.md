@@ -70947,3 +70947,26 @@ Liczby plików bez zmian (prawo-polskie-v2 8, audyt 189). Podbicia: prawo-polski
 - Zamiana na znaczniki: [SPÓŁKA-A], [SPÓŁKA-B], [KRS-A], [KRS-B], [NIP-A], [NIP-B], [REGON-B], [SYGN-SPRAWY], [SYGN-SPRAWY-2], [E-MAIL-POWODA], [DOMENA-POZWANEJ], [ŚWIADEK-K], [ŚWIADEK-P], [TELEFON], [OSOBA-…]; nazwisko w przykładach wariantów pisowni — nazwiska fikcyjne.
 - Zakres: wersja rozwojowa i stabilne (07.10.2026, 26.09.2026) w obu repozytoriach, paczki ZIP (z zachowaniem listy plików), paczki dostawcze z 04.10.2026 (pliki wewnątrz zagnieżdżonych archiwów, CHECKSUMS i SHA256SUMS). `test_router_contract.py`: wzorzec „bez narracji incydentów” na znacznikach. Słowniki prywatności aplikacji (nazwiska PESEL, TERYT) bez zmian — dane referencyjne, nie dane sprawy.
 - Historia commitów na GitHubie zachowuje poprzednie brzmienie; jej przepisanie wymaga osobnej decyzji właściciela.
+
+## AUDYT-2026-10-15b — związek przyczynowy krokowo w skillach (6.232)
+
+- Źródło: przegląd na prośbę użytkownika (2026-10-15): metodę `shared/MOD-GRAF-PRZYCZYNOWY.md` wywoływały tylko analizator-dowodow-v3 (MP13 §13.2a, warunkowo) i chronologia-sprawy-v1 (TRYB C wyłącznie na pytanie użytkownika). Skille, w których związek przyczynowy jest najczęściej przesłanką — analiza-sadowa-v6 (kwalifikacja prawna) i pisma-procesowe-v3 (teza pisma) — nie wywoływały jej wcale; oś czasu mogła zastąpić badanie połączeń samą kolejnością dat.
+- analiza-sadowa-v6 6.17: Przejście II krok 8, linia ZWIĄZEK PRZYCZYNOWY w macierzy fakt-norma, pytanie w PUNKCIE STOP.
+- pisma-procesowe-v3 5.43: W1.2c KROK PRZ przed W1.3 (NIEWYKAZANY → W1.5 ⬛ BRAK) i zakaz przesłanki z samej kolejności dat.
+- chronologia-sprawy-v1 1.18: KROK A5a (obowiązkowy przy ≥2 wątkach ze wspólnymi węzłami, szkodzie/skutku/odpowiedzialności albo pytaniu o przyczynę) i sekcja raportu ZALEŻNOŚCI PRZYCZYNOWE.
+- shared 3.99.35: MOD-GRAF-PRZYCZYNOWY 1.2.0 — lista wywołań; treść metody bez zmian.
+- Aplikacja Lex Machina (osobno): krok ZWIAZEK-PRZYCZYNOWY i OS-CZASU-SPRAWY w rejestrze ścieżki obowiązkowej (warstwa SKILL), runda poprawki przy braku; moduł wczytywany z góry przy pytaniu o związek przyczynowy.
+- Wersje: analiza-sadowa-v6 6.17, pisma-procesowe-v3 5.43, chronologia-sprawy-v1 1.18, shared 3.99.35, audyt-systemu-v4 6.232.
+
+## AUDYT-2026-10-15c — mapy aktów: nowe t.j. 2026 i DU/2026/507 (6.233)
+
+- Źródło: ELI (`api.sejm.gov.pl/eli`, odczyt 2026-10-15, RZĄD 1; obwieszczenia text.pdf i tekst DU/2026/507 odczytane).
+- Transport kolejowy: t.j. Dz.U. 2026 poz. 1324 (obwieszczenie 1.09.2026, ogł. 13.10.2026) zastępuje 2025/1234; obejmuje 2026/41, 815, 912; brak zmian po t.j.
+- Prawo wodne: t.j. Dz.U. 2026 poz. 1335 (obwieszczenie 17.09.2026, ogł. 14.10.2026) zastępuje 2025/960; obejmuje 2025/1535, 2026/445, 605, 815, 1033, 1156 (1156 w tekście jako brzmienie od 1.01.2027); brak zmian po t.j.
+- Ustawa o odpadach: t.j. Dz.U. 2026 poz. 1328 (obwieszczenie 1.09.2026, ogł. 14.10.2026) zastępuje 2023/1587; obejmuje 12 ustaw zmieniających, m.in. 2025/1812, 2026/174, 815, 875 (875 od 1.01.2027); brak zmian po t.j.
+- ⛔ KOREKTA: DU/2026/507 art. 6 (VAT art. 96 ust. 3e–3f) wchodzi w życie 1.11.2028 (art. 31 pkt 4), nie 14.10.2026 — dr-06 (MAPA-AKTOW, 5 modułów VAT, BAZA-AKTOW-OKOLOPODATKOWYCH), ROUTING-MAP, mapa_dzu (wiersz 2026/1263 i MONITORING).
+- DU/2026/507 — tytuł i zakres w mapa_dzu (dwa wiersze: „Prawo przedsiębiorców — zmiana” i „Ustawa SUS — zmiana … zakres do doprecyzowania” zastąpione tytułem urzędowym i zakresem art. 1–11); MONITORING: etapy 1.11.2026, 18.12.2026, 1.11.2028.
+- Nowy wiersz ustawy o CEIDG (t.j. 2026/30; zm. 2026/734, 507) w dr-02 MAPA-AKTOW, ROUTING-MAP i mapa_dzu (TJ, T11); KC ⏳ art. 860 § 3–4 od 1.11.2028 (już w t.j. 2026/795); SUS ⏳ 507 art. 5 od 1.11.2028; rynek pracy 507 art. 11 od 14.10.2026; mod-KSH-spolki-handlowe — spółka cywilna od 1.11.2028 (art. 26 ustawy 507 odczytany).
+- Parser mapy RAG aplikacji (`extractCoreActs`): DU/2026/1324, 1335, 1328, 30 jako t.j. (consolidated); 2025/1234, 2025/960, 2023/1587 nie są już pozycjami głównymi.
+- Wersje: dr-02 3.96, dr-04 3.50, dr-06 3.99.1, dr-09 3.49, prawo-polskie-v2 6.62, shared 3.99.36, audyt-systemu-v4 6.233.
+
